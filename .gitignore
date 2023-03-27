@@ -1,0 +1,4 @@
+# Project exclude paths
+/appRunner/target/
+/organizations/target/
+/processing/target/
