@@ -1,6 +1,7 @@
 package com.processing;
 
-public interface menuCommands {
+public interface menyCompanyCommands {
+    void addNewCompany();
     void showAllCompanies();
     void showBigCompanies();
     void showMidCompanies();
@@ -8,7 +9,5 @@ public interface menuCommands {
     void showCompaniesByRegion();
     void writeCompaniesToFile();
     void readCompaniesFromFile();
-    void writeRegionsToFile();
-    void readRegionsFromFile();
 
 }

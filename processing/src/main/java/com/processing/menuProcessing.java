@@ -6,9 +6,9 @@ import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
 
-public class OrgProcessing implements menuCommands {
+public class menuProcessing implements menyCompanyCommands, menuRegionCommands {
     static List<Company> companyList = new ArrayList<>();
-    static List<Region> regionList = new ArrayList<>();
+    static Set<Region> regionList = new HashSet<>();
     static Scanner read = new Scanner(System.in);
 
     public void addNewCompany() {
@@ -18,6 +18,7 @@ public class OrgProcessing implements menuCommands {
         read.nextLine();
         System.out.println("Введите название и код региона: ");
         Region region = new Region(read.nextLine(), read.nextInt());
+        regionList.add(region);
         read.nextLine();
         System.out.println("Введите количество сотрудников: ");
         int employeeAmount = read.nextInt();
@@ -28,6 +29,7 @@ public class OrgProcessing implements menuCommands {
         companyList.add(new Company(name, region, employeeAmount, dateOfRegistration));
     }
 
+    @Override
     public void addNewRegion() {
         read.nextLine();
         System.out.println("Введите название региона: ");
@@ -92,7 +94,7 @@ public class OrgProcessing implements menuCommands {
     @Override
     public void readCompaniesFromFile() {
         try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("ListOfCompanies.txt"))) {
-            Object obj = null;
+            Object obj;
             while ((obj = inputStream.readObject()) != null) {
                 Company cmpn = (Company) obj;
                 companyList.add(cmpn);
@@ -120,7 +122,7 @@ public class OrgProcessing implements menuCommands {
     @Override
     public void readRegionsFromFile() {
         try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("ListOfRegions.txt"))) {
-            Object obj ;
+            Object obj;
             while ((obj = inputStream.readObject()) != null) {
                 Region rgn = (Region) obj;
                 regionList.add(rgn);
