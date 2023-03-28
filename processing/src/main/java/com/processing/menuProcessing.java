@@ -98,6 +98,7 @@ public class menuProcessing implements menyCompanyCommands, menuRegionCommands {
             while ((obj = inputStream.readObject()) != null) {
                 Company cmpn = (Company) obj;
                 companyList.add(cmpn);
+                regionList.add(new Region(cmpn.getRegionName(), cmpn.getRegionCode()));
                 System.out.println(cmpn);
             }
         } catch (EOFException ex){

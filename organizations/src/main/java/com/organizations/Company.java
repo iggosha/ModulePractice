@@ -3,14 +3,12 @@ package com.organizations;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-// Список предприятий региона
-// Список всех всех предприятий
-// Список предприятий по крупным/малым
 public class Company implements Serializable {
     private String name;
     private Region region;
     private int employeeAmount;
     private LocalDate dateOfRegistration;
+    private static final long serialVersionUID = -3830263225727024679L;
 
     public String getName() {
         return name;
@@ -26,6 +24,7 @@ public class Company implements Serializable {
     public int getRegionCode() {
         return region.getCode();
     }
+    public String getRegionName() {return region.getName(); }
 
     public void setEmployeeAmount(int employeeAmount) {
         this.employeeAmount = employeeAmount;
